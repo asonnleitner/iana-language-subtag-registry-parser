@@ -2,7 +2,6 @@ import https from 'https'
 
 const registryUrl = new URL('https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry')
 
-// console.log(process.argv)
 
 const fetchFromRegistry = (url) => {
   return new Promise((resolve) => https.get(
