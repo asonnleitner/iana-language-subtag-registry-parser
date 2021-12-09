@@ -1,0 +1,35 @@
+{
+  "name": "iana-language-subtag-registry-parser",
+  "version": "1.0.0",
+  "description": "Parses the response body from https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry to JSON.",
+  "bugs": {
+    "url": "https://github.com/asonnleitner/iana-language-subtag-registry-parser/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asonnleitner/iana-language-subtag-registry-parser.git"
+  },
+  "type": "module",
+  "author": "Andreas Sonnleitner <asonnleitner@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "lint:fix": "eslint --ext .js --fix --ignore-path .gitignore .",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "devDependencies": {
+    "@jest/globals": "^27.4.2",
+    "eslint": "^8.4.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "jest": "^27.4.3",
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": ">=16.13.1",
+    "pnpm": ">=6.23.6"
+  }
+}
