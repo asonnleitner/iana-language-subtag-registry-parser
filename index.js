@@ -2,12 +2,14 @@ import https from 'https'
 
 const registryUrl = new URL('https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry')
 
+// console.log(process.argv)
+
 const fetchFromRegistry = (url) => {
   return new Promise((resolve) => https.get(
     url,
     {
       headers: {
-        'User-Agent': process.env.npm_config_user_agent
+        'User-Agent': 'node'
       }
     },
     (res) => {
@@ -61,16 +63,20 @@ const parseRegistryLanguages = (body) => {
     })
 }
 
-// fetchFromRegistry(registryUrl)
-//   .then((body) => {
-//     const languages = parseRegistryLanguages(body)
-//     console.log({ languages })
-//     process.exitCode = 0
-//   })
-//   .catch((err) => {
-//     console.error(err)
-//     process.exitCode = 1
-//   })
+fetchFromRegistry(registryUrl)
+  .then((body) => {
+    const languages = parseRegistryLanguages(body)
+
+    if (process.argv.indexOf('--stdout') !== -1) {
+      process.stdout.write(JSON.stringify(languages.slice(0, 10), null, 2))
+    }
+
+    process.exitCode = 0
+  })
+  .catch((err) => {
+    console.error(err)
+    process.exitCode = 1
+  })
 
 export {
   registryUrl,

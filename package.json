@@ -14,6 +14,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "dev:debug": "nodemon --inspect-brk index.js",
+    "start": "node index.js",
+    "start:stdout": "node index.js --stdout",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js --fix --ignore-path .gitignore .",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
