@@ -9,18 +9,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: echo "::set-output name=node-version::$(<package.json jq -r '.engines.node' | sed 's/[^0-9.]*//g')"
-        id: nvm
+        id: node
 
       - run: echo "::set-output name=pnpm-version::$(<package.json jq -r '.engines.pnpm' | sed 's/[^0-9.]*//g')"
         id: pnpm
 
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: ${{ steps.nvm.outputs.pnpm-version }}
+          version: ${{ steps.pnpm.outputs.pnpm-version }}
 
       - uses: actions/setup-node@v2
         with:
-          node-version: $node-version
+          node-version: ${{ steps.node.outputs.node-version }}
           check-latest: false
           cache: 'pnpm'
 
